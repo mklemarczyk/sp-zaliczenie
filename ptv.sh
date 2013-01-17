@@ -16,8 +16,22 @@ function pobierzProgram {
 
 function wyswietlenieProgramu {
 	cat $1 | tr "<" "\n" > $1;
-	godziny=`cat $1 | grep "tvHour"`;
-	tytuly=`cat $1 | grep "tvProg"`	
+	cat $1 | grep "tvHour" > "godziny.tmp";
+	godziny=`cat godziny.tmp`;
+	cat $1 | grep "tvProg" > "tytuly.tmp";
+	tytuly=`cat tytuly.tmp`;
+
+	ile=`cat godziny.tmp | wc -l`;
+
+echo $godziny;
+echo $tytuly;
+echo $ile;
+
+	i=$[2];
+
+	s=$[i*26+20];
+
+echo ${godziny:s:5};
 
 	#poczatek=$[grep -n 'table class="zebraList"' $1 | cut -d : -f 1];
 	#koniec=$[wc -l $1+1];
