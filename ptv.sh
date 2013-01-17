@@ -22,6 +22,15 @@ function wyswietlenieProgramu {
 	#poczatek=$[grep -n 'table class="zebraList"' $1 | cut -d : -f 1];
 	#koniec=$[wc -l $1+1];
 	#dotail=$[koniec-poczatek];
+
+	#for ((  ;  ;  )) ; do
+	#done
+	
+	for <zmienna> in <lista> ; do
+
+	done
+	
+	
 }
 
 
