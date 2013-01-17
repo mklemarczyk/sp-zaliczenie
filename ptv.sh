@@ -6,6 +6,7 @@ function wyborProgramu {
 
 function pobierzProgram {
 	wget -O "program.tmp" "http://tv.wp.pl/id,$1,d,$2,all,1,mprogramy.html";
+	wyswietlenieProgramu "program.tmp";
 	rm "program.tmp";
 }
 
