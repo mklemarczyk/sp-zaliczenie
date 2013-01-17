@@ -16,11 +16,18 @@ function pobierzProgram {
 
 function wyswietlenieProgramu {
 	cat $1 | tr "<" "\n" > $1;
-	godziny=`cat $1 | grep "tvHour"`;	
-	echo "Nic";
-	poczatek=$[grep -n 'table class="zebraList"' $1 | cut -d : -f 1];
-	koniec=$[wc -l $1+1];
-	dotail=$[koniec-poczatek];
+	godziny=`cat $1 | grep "tvHour"`;
+	tytuly=`cat $1 | grep "tvProg"`	
+
+	#poczatek=$[grep -n 'table class="zebraList"' $1 | cut -d : -f 1];
+	#koniec=$[wc -l $1+1];
+	#dotail=$[koniec-poczatek];
+
+	for ((  ;  ;  )) ; do
+
+
+	done
+
 }
 
 
