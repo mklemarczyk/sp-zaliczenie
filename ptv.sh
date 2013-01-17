@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function wyborProgramu {
-
+	echo "Nic";
 }
 
 function pobierzProgram {
@@ -10,12 +10,13 @@ function pobierzProgram {
 }
 
 function wyswietlenieProgramu {
-
+	echo "Nic";
 }
 
 
 dialog --msgbox "Witaj w programie TV" 0 0;
 
-dialog --menu "Wybierz program:" 0 0 0 1 "TVP-1" 2 "TVP-2" 5 "Polsat" 17 "TVN";
+dialog --menu "Wybierz program:" 0 0 0 1 "TVP-1" 2 "TVP-2" 5 "Polsat" 17 "TVN" 2> wybor.tmp;
+
 
 
