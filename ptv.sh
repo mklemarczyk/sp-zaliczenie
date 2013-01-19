@@ -40,7 +40,7 @@ echo ${godziny:s:5};
 	#for ((  ;  ;  )) ; do
 	#done
 	
-	for <zmienna> in <lista> ; do
+	for $tytul in $tytuly ; do
 
 	done
 	
