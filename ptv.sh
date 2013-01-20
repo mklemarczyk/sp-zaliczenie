@@ -11,11 +11,13 @@ function wyborProgramu {
 function pobierzProgram {
 	wget -O "program.tmp" "http://tv.wp.pl/id,$1,d,$2,all,1,mprogramy.html" 2> /dev/null;
 	formatowanieProgramu "program.tmp";
-	rm "program.tmp";
+	#rm "program.tmp";
 }
 
 function formatowanieProgramu {
-	cat $1 | tr "<" "\n" > $1;
+	cat $1 | tr "<" "\n" > "program2.tmp";
+	rm $1;	
+	mv "program2.tmp" $1;
 	cat $1 | grep "tvHour" > "godziny.tmp";
 	cat $1 | grep "tvProg" > "tytuly.tmp";
 	wyswietlenieProgramu $1 "godziny.tmp" "tytuly.tmp";
