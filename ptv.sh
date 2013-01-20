@@ -10,41 +10,34 @@ function wyborProgramu {
 
 function pobierzProgram {
 	wget -O "program.tmp" "http://tv.wp.pl/id,$1,d,$2,all,1,mprogramy.html" 2> /dev/null;
-	wyswietlenieProgramu "program.tmp";
+	formatowanieProgramu "program.tmp";
 	rm "program.tmp";
 }
 
-function wyswietlenieProgramu {
+function formatowanieProgramu {
 	cat $1 | tr "<" "\n" > $1;
 	cat $1 | grep "tvHour" > "godziny.tmp";
-	godziny=`cat godziny.tmp`;
 	cat $1 | grep "tvProg" > "tytuly.tmp";
-	tytuly=`cat tytuly.tmp`;
+	wyswietlenieProgramu $1 "godziny.tmp" "tytuly.tmp";
+	rm "godziny.tmp";
+	rm "tytuly.tmp";
+}
 
-	ile=`cat godziny.tmp | wc -l`;
+function wyswietlenieProgramu {
+	rm "$1";
 
-echo $godziny;
-echo $tytuly;
-echo $ile;
+	ile=`cat $2 | wc -l`;
 
-	i=$[2];
+	touch "$1";
 
-	s=$[i*26+20];
-
-echo ${godziny:s:5};
-
-	#poczatek=$[grep -n 'table class="zebraList"' $1 | cut -d : -f 1];
-	#koniec=$[wc -l $1+1];
-	#dotail=$[koniec-poczatek];
-
-	#for ((  ;  ;  )) ; do
-	#done
-	
-	for $tytul in $tytuly ; do
-
+	for (( i=0; i<$ile; i++ ));
+	do
+		godzina=`head -n $[i+1] "$2" | tail -n 1`;
+		tytul=`head -n $[i+1] "$3" | tail -n 1`;
+		echo $godzina $tytul >> "$1";
 	done
-	
-	
+
+	dialog --textbox "$1" -1 -1;
 }
 
 
