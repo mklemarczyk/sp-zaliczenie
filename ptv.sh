@@ -32,8 +32,8 @@ function wyswietlenieProgramu {
 
 	for (( i=0; i<$ile; i++ ));
 	do
-		godzina=`head -n $[i+1] "$2" | tail -n 1`;
-		tytul=`head -n $[i+1] "$3" | tail -n 1`;
+		godzina=`cat godziny.tmp | cut -d '>' -f 2 | head -n $[i+1] | tail -n 1`;
+		tytul=` cat tytuly.tmp | cut -d '>' -f 2 | head -n $[i+1] | tail -n 1`;
 		echo $godzina $tytul >> "$1";
 	done
 
