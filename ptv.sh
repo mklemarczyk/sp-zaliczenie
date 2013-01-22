@@ -45,6 +45,7 @@ function wyswietlenieProgramu {
 
 dialog --msgbox "Witaj w programie TV" 0 0;
 wyborProgramu;
-
+dialog --msgbox "Miłego dnia" 0 0;
+clear;
 
 
